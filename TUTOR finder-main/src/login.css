@@ -1,56 +1,102 @@
-.login{
-    background: rgba(249, 249, 249, 1);
-    background: -moz-linear-gradient(top,  rgba(248,248,248,1) 0%, rgba(249,249,249,1) 100%);
-    background: -webkit-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
-    background: -o-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
-    background: -ms-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
-    background: linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#f9f9f9',GradientType=0 );
-    -webkit-box-shadow: 0 1px 0 #fff inset;
-    -moz-box-shadow: 0 1px 0 #fff inset;
-    -ms-box-shadow: 0 1px 0 #fff inset;
-    -o-box-shadow: 0 1px 0 #fff inset;
-    box-shadow: 0 1px 0 #fff inset;
-    border: 1px solid #c4c6ca;
+
+
+/* Ensure the body and html cover the full height */
+html {
+    height: 100%;  /* Full height */
+    margin: 0;  /* Remove default margin */
+    /* background-image: url(https://t4.ftcdn.net/jpg/02/75/96/99/360_F_275969992_cf6lDx5Vz0cIgouHW3DJmaXLe0djwFqO.jpg); */
+}
+
+body {
+    height: 100%;  
+    /* background-color: #c4c6ca; */
+    margin: 0;  /* Remove default margin */
+    /* background-image: url(https://t4.ftcdn.net/jpg/02/75/96/99/360_F_275969992_cf6lDx5Vz0cIgouHW3DJmaXLe0djwFqO.jpg); */
+}
+
+/* Main login container styles */
+.login {
+    background: rgb(179, 209, 239);
+    /* background: linear-gradient(to bottom, rgba(248, 248, 248, 1) 0%, rgba(249, 249, 249, 1) 100%); */
+    /* background-image: url(https://t4.ftcdn.net/jpg/02/75/96/99/360_F_275969992_cf6lDx5Vz0cIgouHW3DJmaXLe0djwFqO.jpg); */
+    background-size: cover;  /* Ensure the background image covers the entire area */
+    background-position: center;  /* Center the background image */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  /* Add a subtle shadow for depth */
     margin: 0 auto;
-    padding: 25px 0 0;
+    padding: 40px;
+    border-radius: 8px;  /* Rounded corners */
     position: relative;
     text-align: center;
-    text-shadow: 0 1px 0 #fff;
-    width: 100vw;
-    height: 100vh;
-    background-repeat: no-repeat;
-    background: url(https://t4.ftcdn.net/jpg/02/75/96/99/360_F_275969992_cf6lDx5Vz0cIgouHW3DJmaXLe0djwFqO.jpg);
+    width: 90vw;  /* Responsive width */
+    max-width: 400px;  /* Limit maximum width */
+    height: auto;  /* Auto height for flexibility */
+    display: flex;
+    flex-direction: column;  /* Use flexbox for alignment */
+    align-items: center;
+    position: absolute;  /* Use absolute positioning to fill the viewport */
+    top: 50%;  /* Center vertically */
+    left: 50%;  /* Center horizontally */
+    transform: translate(-50%, -50%);  /* Adjust positioning */
 }
 
-.us1{
-    margin: auto;
-    border: 1px solid #000;
-    text-align: center;
-    padding: 5px ;
-    display: table;
-    background: #c7c0c0b7;
+/* Input field styles */
+.form-group {
+    width: 100%;  /* Full width for inputs */
+    margin-bottom: 15px;  /* Spacing between inputs */
+}
+
+input {
+    width: 100%;  /* Full width for input */
+    padding: 12px;
+    border: 1px solid #c4c6ca;  /* Light border */
+    border-radius: 4px;  /* Rounded corners for inputs */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);  /* Subtle shadow */
+    transition: border-color 0.3s;  /* Smooth border transition */
+}
+
+input:focus {
+    border-color: #007bff;  /* Change border color on focus */
+    outline: none;  /* Remove default outline */
+}
+
+/* Button styles */
+button {
+    background-color: #007bff;  /* Primary color */
+    color: white;  /* White text */
+    border: none;  /* No border */
+    border-radius: 4px;  /* Rounded corners */
+    padding: 10px 20px;  /* Padding around button */
+    cursor: pointer;  /* Pointer cursor on hover */
+    transition: background-color 0.3s;  /* Smooth background transition */
+}
+
+button:hover {
+    background-color: #0056b3;  /* Darker shade on hover */
+}
+.custom-gray-button {
+    background-color: rgb(34, 30, 30); /* Set the background color to gray */
+    border: none; /* Remove border */
+    color: white; /* Set text color to white */
+}
+
+.custom-gray-button:hover {
+    background-color: darkgray; /* Change color on hover */
 }
 
 
-.us2 {     
-    margin: auto;
-    border: 1px solid black;
-    text-align: center;
-    padding: 5px;
-    display: table;
-    background: #c7c0c0b7;
+/* Google Login section */
+.google-auth {
+    margin-top: 20px;  /* Spacing above the Google Login */
 }
 
-.us3{
-    margin:auto ;
-    border: 1px solid black;
-    text-align: center;
-    padding: 5px ;
-    display: table;
-    background: #c7c0c0b7;
+/* Link styles */
+.link {
+    margin-top: 10px;  /* Spacing above the link */
+    color: blue;  /* Link color */
+    text-decoration: underline;  /* Underline the link */
+    cursor: pointer;  /* Pointer cursor */
 }
 
-.maindiv { 
-    background-image: url(https://st4.depositphotos.com/1046763/38506/i/1600/depositphotos_385065556-stock-photo-beige-texture-background.jpg);
+.link:hover {
+    text-decoration: none;  /* Remove underline on hover */
 }

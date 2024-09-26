@@ -1,193 +1,174 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
-import { useNavigate } from "react-router-dom";
-import Particles from "react-tsparticles";
-import './login.css';
-import { Link ,Outlet} from "react-router-dom";
-import GoogleLogin from 'react-google-login';
-import Button from 'react-bootstrap/Button';
-
-
-
+import React from "react";
+import "./login.css";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import GoogleLogin from "react-google-login";
 
 class GoogleSocialAuth extends React.Component {
-  async takeid(token){
-    const data={'token': token};
-     const response = await fetch("http://127.0.0.1:8000/check/giveid/",{
-         method: "POST",
-         headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          mode: 'cors',
-          body: JSON.stringify(data)
-     });
-     // response is a promise here 
-     if(!response.ok)
-     {
-         alert("this user may not exits ");
-         alert("you can google the respone code :"+response.status);
-     }
-     else
-     {
-
-      const yoyo=response.json();
+  async takeid(token) {
+    const data = { token: token };
+    const response = await fetch("http://127.0.0.1:8000/check/giveid/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      mode: "cors",
+      body: JSON.stringify(data),
+    });
+    // response is a promise here
+    if (!response.ok) {
+      alert("This user does not exit. Response code:" + response.status);
+      // alert("you can google the respone code :" + response.status);
+    } else {
+      const yoyo = response.json();
       // yet not response is extrected properly
       yoyo.then((data) => {
-          console.log(data);
-          localStorage.setItem('userid',data.id);
-          window.location = "/Mappage";
-        });
-
-
-     }
-
+        console.log(data);
+        localStorage.setItem("userid", data.id);
+        window.location = "/Mappage";
+      });
+    }
   }
 
-   async handlelogin(accessToken,tokenId) {
-      const data={'access_token': accessToken, 'id_token': tokenId};
-     const response = await fetch("http://127.0.0.1:8000/check/social-login/google/",{
-         method: "POST",
-         headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          mode: 'cors',
-          body: JSON.stringify(data)
-     });
-     // response is a promise here 
-     if(!response.ok)
-     {
-         alert("this user may not exits ");
-         alert("you can google the respone code :"+response.status);
-     }
-     else
-     {
-        const yoyo=response.json();
-        // yet not response is extrected properly
-        yoyo.then((data) => {
-            console.log(data);
-            localStorage.setItem('token',data.key);
-            this.takeid(data.key);
-            //localStorage.setItem('userid',data.id);
-           // window.location = "/Mappage";
-          });
-    
-     }
-    
-    
-    
-
-  }
-
-    render() {
-      const googleResponse = (response) => {
-      console.log(response);
-        console.log(response.accessToken);
-        console.log(response.tokenId)
-        this.handlelogin(response.accessToken,response.tokenId);
+  async handlelogin(accessToken, tokenId) {
+    const data = { access_token: accessToken, id_token: tokenId };
+    const response = await fetch(
+      "http://127.0.0.1:8000/check/social-login/google/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        mode: "cors",
+        body: JSON.stringify(data),
       }
-      return (
-        <div className="App">
-          <h1>LOGIN WITH GOOGLE</h1>
-        
-          <GoogleLogin
-            clientId='1069247781281-4ies7pb49nckgplk1okavrm8krm2a547.apps.googleusercontent.com'
-            buttonText="LOGIN WITH GOOGLE"
-            onSuccess={googleResponse }
-            onFailure={googleResponse }
-          />
-        </div>
-      );
+    );
+    // response is a promise here
+    if (!response.ok) {
+      alert("This user does not exit. Response code:" + response.status);
+    } else {
+      const yoyo = response.json();
+      // yet not response is extrected properly
+      yoyo.then((data) => {
+        console.log(data);
+        localStorage.setItem("token", data.key);
+        this.takeid(data.key);
+        //localStorage.setItem('userid',data.id);
+        // window.location = "/Mappage";
+      });
     }
   }
-  
-class LOGIN extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
+  render() {
+    const googleResponse = (response) => {
+      console.log(response);
+      console.log(response.accessToken);
+      console.log(response.tokenId);
+      this.handlelogin(response.accessToken, response.tokenId);
+    };
+    return (
+      <div className="App">
+        <h3>LOGIN WITH GOOGLE</h3>
 
-        username:'',
-        password:'',
-     
-        }
-    }
-
-
-    f1(e){
-        this.setState({username: e.target.value});
-    }
-    f2(e){
-        this.setState({password: e.target.value})
-    }
-   
-    async handle(){
-        const data={username: this.state.username,password: this.state.password};
-       const response = await fetch("http://127.0.0.1:8000/check/login/",{
-           method: "POST",
-           headers: {
-              'Content-Type': 'application/json'
-              // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            mode: 'cors',
-            body: JSON.stringify(data)
-       });
-       // response is a promise here 
-       if(!response.ok)
-       {
-           alert("this user may not exits ");
-           alert("you can google the respone code :"+response.status);
-       }
-       else
-       {
-          const yoyo=response.json();
-          // yet not response is extrected properly
-          yoyo.then((data) => {
-              console.log(data);
-              localStorage.setItem('token',data.Token);
-              localStorage.setItem('userid',data.id);
-              window.location = "/Mappage";
-            });
-      
-       }
-      
-      
-        }
-   
-    render(){
-     
-        return(
-            <>
-       
-                <div className="login">
-                <h3>LOGIN</h3>
-                    <form>
-                    <div className="us1">
-                        <input type="text" onChange={(e) => this.f1(e)}  placeholder="username"/></div>
-                       <div className="us2"> <input type="password" onChange={(e) => this.f2(e)}placeholder="password" /></div>
-                      
-                       <div className="us3"> <button type="button" onClick={() => this.handle()} >SUBMIT </button></div>
-                    </form>
-                    <GoogleSocialAuth/>
-                    <div className="butoontutor">
-                    <Link
-            style={{ display: "block-inline", margin: "auto",border: "1px solid blue",color: "black",background: "grey"}}
-            to="/Tutorportal"
-
-          >
-          SHIFT TO TUTOR PORTAL
-          </Link>
-       
-          
-                    </div>
-                </div>
-                </>
-            
-        )
-    }
+        <GoogleLogin
+          clientId="1069247781281-4ies7pb49nckgplk1okavrm8krm2a547.apps.googleusercontent.com"
+          buttonText="LOGIN WITH GOOGLE"
+          onSuccess={googleResponse}
+          onFailure={googleResponse}
+        />
+      </div>
+    );
+  }
 }
 
+class LOGIN extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+    };
+  }
 
-export default LOGIN
- 
+  f1(e) {
+    this.setState({ username: e.target.value });
+  }
+  f2(e) {
+    this.setState({ password: e.target.value });
+  }
+
+  async handle() {
+    const data = {
+      username: this.state.username,
+      password: this.state.password,
+    };
+    const response = await fetch("http://127.0.0.1:8000/check/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      mode: "cors",
+      body: JSON.stringify(data),
+    });
+    // response is a promise here
+    if (!response.ok) {
+      alert("This user does not exit. Response code:" + response.status);
+    } else {
+      const yoyo = response.json();
+      // yet not response is extrected properly
+      yoyo.then((data) => {
+        console.log(data);
+        localStorage.setItem("token", data.Token);
+        localStorage.setItem("userid", data.id);
+        window.location = "/Mappage";
+      });
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <h1>EduLink</h1>
+        <div className="login">
+          <h3>Login</h3>
+          <div className="card">
+            <form>
+              <div className="form-group">
+                <input
+                  type="text"
+                  onChange={(e) => this.f1(e)}
+                  placeholder="Username"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  onChange={(e) => this.f2(e)}
+                  placeholder="Password"
+                />
+              </div>
+              <div className="form-group">
+                <button type="button" onClick={() => this.handle()}>
+                  Submit
+                </button>
+              </div>
+            </form>
+            <GoogleSocialAuth />
+            <div className="link">
+              <Link to="/Tutorportal">
+                <Button className="custom-gray-button">
+                  Shift to Tutor Portal
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+}
+
+export default LOGIN;
