@@ -1,0 +1,129 @@
+.mapopup{ 
+    display: inline-block;
+    margin:10px;
+    border: 2px solid black;
+    border-radius: 25px;
+    background: url(https://i.pinimg.com/736x/8d/9f/fe/8d9ffe7c05ba5ef3968263bd8f3d2ff0.jpg);
+    background-position: left top;
+    background-repeat: repeat; 
+}
+
+.div{
+    background: #faebd7;
+    background-image: url(https://media.istockphoto.com/photos/modern-beige-painted-wall-background-texture-picture-id926312000)
+}
+
+.btn btn-primary {
+    background-color: blue;
+}
+
+.butstyle{
+    display: flex;
+    margin-right: 15px;
+    font-family: cursive;
+}
+
+.tutormain{
+    display: block;
+    background-image: url(https://media.istockphoto.com/photos/modern-beige-painted-wall-background-texture-picture-id926312000);
+    text-align: center;
+    margin: auto ;
+    padding: 10px;
+    border: 3px solid #c2c2b3;
+}
+
+.navbar {
+    background: black;
+    opacity: .9;
+    display: flex;
+    padding: 10px;
+    position:sticky;
+}
+
+.tutorlist{
+    display: inline ;
+    overflow-y: scroll;
+}
+
+.Mappopup{
+    text-align: center;
+    border: 5px solid black;
+}
+
+.Map {
+    text-align: center;
+    margin: auto;
+}
+
+.butoontutor {
+    margin: 20px;
+    padding: 20px;
+}
+
+.BUTLIST {
+    display: inline;
+    position: relative;
+    text-align: center; 
+}
+
+.POPUPTUTOR{
+    text-align: center;
+    background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSLn-jC_sWr0mqV81h2gCIzfNMYEGzbhL1OQ&usqp=CAU);
+    height:100%;
+    width: 100%;
+}
+
+.headertutor{
+    position: relative;
+    text-align:center;
+}
+
+.imageclass {
+    float: right;
+    border: 3px solid darkslateblue;
+    display: contents;
+}
+
+.contentclass {
+    display: flow-root;
+    margin-block: auto;
+    border: 3px solid #c2c2b3;
+    background-color: black;
+    opacity: .9;
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.contentloginform {
+    display: flow-root;
+    border: 3px solid #c2c2b3;
+    height: 100vh;
+    width: 100wh;
+    opacity: .9;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSLn-jC_sWr0mqV81h2gCIzfNMYEGzbhL1OQ&usqp=CAU)
+}
+
+.contentlogin h2{
+    border: 3px solid #676810;
+    background: aliceblue;
+    font-family: cursive;  
+}
+
+.contentclass h2{
+    border: 3px solid #676810;
+    background: aliceblue;
+    font-family: cursive;
+}
+
+.nondisplay{
+    display: none;
+}
+
+.yesdisplay{
+    display: block;
+}
+
+.mapstyle{
+    margin: 30px 50px 0px 0px;
+}
